@@ -1,1 +1,2 @@
 # anotherRepoPush
+[MIT](LICENSE)
