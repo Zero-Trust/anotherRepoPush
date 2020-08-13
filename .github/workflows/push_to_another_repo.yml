@@ -1,7 +1,10 @@
 name: Upload to Another Repository
-on: 
-  release:
-    types: [published]
+on:
+  push:
+    branches: 
+      - master
+  # release:
+  #   types: [published]
     
 jobs:
   remote-upload:
