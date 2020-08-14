@@ -24,6 +24,7 @@ jobs:
           git config --global user.name "Zero-Trust"
           git config --global user.email "62760177+Zero-Trust@users.noreply.github.com"
           git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
+          git pull origin master
           git checkout master
           
       - name: Get file
