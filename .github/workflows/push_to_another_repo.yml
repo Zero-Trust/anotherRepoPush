@@ -64,9 +64,9 @@ jobs:
         run: |
           echo "***** clean up *****"
           pwd
-          ls -l
+          ls -l ./pdf
           echo "***** clean up *****"
-          cd ..
+          # cd ..
           git rm pdf
           git rm .gitmodules
           pwd
