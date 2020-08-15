@@ -20,7 +20,6 @@ jobs:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          git rm --cached pdf
           pwd
           echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
           chmod 600 ./deploy_key.pem
@@ -31,10 +30,11 @@ jobs:
           # cd pdf
           # git checkout master
           # git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
-          pwd
+          git submodule add https://github.com/Zero-Trust/pdf.git
           
       - name: Get file
         run: |
+          echo "This is test" > ./pdf/Notes/test.txt
           touch main.pdf
           echo "this is test" > main.pdf
           
@@ -42,9 +42,20 @@ jobs:
         # env:
         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          git add -A
-          if ! git diff --cached --quiet; then
-            git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
-            git pull origin master
-            git push origin master
-          fi
+          cd ./pdf
+          git add .
+          git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
+          git push origin master  
+#           git add -A
+#           if ! git diff --cached --quiet; then
+#             git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
+#             git pull origin master
+#             git push origin master
+#           fi
+      - name: clean-up
+        run: |
+          cd ..
+          git rm pdf
+          git rm .gitmodules
+          pwd
+          
