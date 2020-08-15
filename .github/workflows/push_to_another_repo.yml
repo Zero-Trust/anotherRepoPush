@@ -21,6 +21,7 @@ jobs:
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
           pwd
+          git submodule deinit
           git rm --cached pdf
           git rm --cached .gitmodules
           echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
