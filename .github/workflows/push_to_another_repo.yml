@@ -38,6 +38,8 @@ jobs:
           touch main.pdf
           echo "this is test" > main.pdf
           echo "This is test" > Notes/test.txt
+          git add main.pdf
+          git add Notes/test.tex
           echo "***** Get file *****"
           pwd
           ls -l
