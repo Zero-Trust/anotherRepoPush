@@ -45,14 +45,14 @@ jobs:
           ls -l
           echo "***** Get file *****"
           
-#       - name: Commit to Another Repository
-#         # env:
-#         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
-#         run: |
-#           ls -l
-#           git add .
-#           git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
-#           git push origin master
+      - name: Commit to Another Repository
+        # env:
+        #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+        run: |
+          ls -l
+          git add .
+          git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
+          git push origin master
           
 #           git add -A
 #           if ! git diff --cached --quiet; then
