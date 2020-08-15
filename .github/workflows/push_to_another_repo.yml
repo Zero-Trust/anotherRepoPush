@@ -34,17 +34,17 @@ jobs:
           
       - name: Get file
         run: |
-          echo "This is test" > ./pdf/Notes/test.txt
+          cd pdf/
           touch main.pdf
           echo "this is test" > main.pdf
-          ls -l ./pdf
+          echo "This is test" > Notes/test.txt
+          ls -l
           
       - name: Commit to Another Repository
         # env:
         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          ls -l ./pdf
-          cd ./pdf
+          ls -l
           git add .
           git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
           git push origin master  
