@@ -53,8 +53,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
-          origin=https://${GITHUB_ACTOR}:${API_TOKEN_GITHUB}@github.com/Zero-Trust/pdf.git
+          # origin=https://${GITHUB_ACTOR}:${API_TOKEN_GITHUB}@github.com/Zero-Trust/pdf.git
           # origin=https://{API_TOKEN_GITHUB}:x-oauth-basic@github.com/Zero-Trust/pdf.git
+          origin=https://x-access-token:{API_TOKEN_GITHUB}@github.com/Zero-Trust/pdf.git
           cd pdf/
           echo "**** 2 ****"
           git config -l
