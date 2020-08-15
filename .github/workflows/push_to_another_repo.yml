@@ -21,8 +21,8 @@ jobs:
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
           pwd
-          # echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
-          # chmod 600 ./deploy_key.pem
+          echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
+          chmod 600 ./deploy_key.pem
           # git config --global pull.rebase false
           # git config --global user.name "Zero-Trust"
           # git config --global user.email "62760177+Zero-Trust@users.noreply.github.com"
