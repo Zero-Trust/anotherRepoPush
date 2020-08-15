@@ -20,6 +20,7 @@ jobs:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
+          git rm --cached pdf
           pwd
           echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
           chmod 600 ./deploy_key.pem
@@ -37,14 +38,14 @@ jobs:
           touch main.pdf
           echo "this is test" > main.pdf
           
-      - name: Commit to Another Repository
-        # env:
-        #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
-        run: |
-          git add -A
-          if ! git diff --cached --quiet; then
-            git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
-            git pull origin master
-            git push origin master
-          fi
-          rm ./deploy_key.pem
+#       - name: Commit to Another Repository
+#         # env:
+#         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+#         run: |
+#           git add -A
+#           if ! git diff --cached --quiet; then
+#             git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
+#             git pull origin master
+#             git push origin master
+#           fi
+#           rm ./deploy_key.pem
