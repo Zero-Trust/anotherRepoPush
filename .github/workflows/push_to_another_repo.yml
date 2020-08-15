@@ -22,7 +22,7 @@ jobs:
         run: |
           pwd
           git rm --cached pdf
-          git rm .gitmodules
+          git rm --cached .gitmodules
           echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
           chmod 600 ./deploy_key.pem
           git config --global pull.rebase false
