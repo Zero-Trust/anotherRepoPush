@@ -21,6 +21,8 @@ jobs:
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
           pwd
+          git rm pdf
+          git rm .gitmodules
           echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
           chmod 600 ./deploy_key.pem
           git config --global pull.rebase false
@@ -38,16 +40,20 @@ jobs:
           touch main.pdf
           echo "this is test" > main.pdf
           echo "This is test" > Notes/test.txt
+          echo "***** Get file *****"
+          pwd
           ls -l
+          echo "***** Get file *****"
           
-      - name: Commit to Another Repository
-        # env:
-        #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
-        run: |
-          ls -l
-          git add .
-          git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
-          git push origin master  
+#       - name: Commit to Another Repository
+#         # env:
+#         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+#         run: |
+#           ls -l
+#           git add .
+#           git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
+#           git push origin master
+          
 #           git add -A
 #           if ! git diff --cached --quiet; then
 #             git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
@@ -56,6 +62,10 @@ jobs:
 #           fi
       - name: clean-up
         run: |
+          echo "***** clean up *****"
+          pwd
+          ls -l
+          echo "***** clean up *****"
           cd ..
           git rm pdf
           git rm .gitmodules
