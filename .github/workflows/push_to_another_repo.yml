@@ -51,13 +51,15 @@ jobs:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
+          origin=https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/3nan3/blog.git
           cd pdf/
           echo "**** 2 ****"
           git config -l
           echo "**** 2 ****"
+          git pull $origin master
           git add .
           git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
-          git push origin master
+          git push $origin master
           
 #           git add -A
 #           if ! git diff --cached --quiet; then
