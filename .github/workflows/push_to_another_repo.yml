@@ -20,10 +20,6 @@ jobs:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          pwd
-          git submodule deinit -all
-          git rm --cached pdf
-          git rm --cached .gitmodules
           echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
           chmod 600 ./deploy_key.pem
           git config --global pull.rebase false
@@ -33,6 +29,7 @@ jobs:
           # cd pdf
           # git checkout master
           # git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
+          pwd
           git submodule add https://github.com/Zero-Trust/pdf.git
           
       - name: Get file
