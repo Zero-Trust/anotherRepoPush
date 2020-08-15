@@ -51,7 +51,7 @@ jobs:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          origin=https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/3nan3/blog.git
+          origin=https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/Zero-Trust/pdf.git
           cd pdf/
           echo "**** 2 ****"
           git config -l
