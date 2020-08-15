@@ -49,7 +49,7 @@ jobs:
         # env:
         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          ls -l
+          cd pdf/
           git add .
           git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
           git push origin master
@@ -67,8 +67,9 @@ jobs:
           ls -l ./pdf
           echo "***** clean up *****"
           # cd ..
-          git submodule deinit pdf
+          git submodule deinit --all
           git rm pdf
-          git rm .gitmodules
+          git rm --cached .gitmodules && rm .gitmodules
+          git status
           pwd
           
