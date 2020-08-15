@@ -48,4 +48,3 @@ jobs:
             git pull origin master
             git push origin master
           fi
-          rm ./deploy_key.pem
