@@ -18,8 +18,8 @@ jobs:
       - name: Setup git repogitories
         env:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
-          run: | 
-            pwd
+        run: | 
+          pwd
 #         run: |
 #           echo "${GH_REPO_DEPLOY_KEY}" > ~/deploy_key.pem
 #           chmod 600 ~/deploy_key.pem
