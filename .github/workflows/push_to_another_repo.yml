@@ -51,9 +51,10 @@ jobs:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
           GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
           # origin=https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/Zero-Trust/pdf.git
-          origin=https://{GITHUB_TOKEN}:x-oauth-basic@github.com/Zero-Trust/pdf.git
+          origin=https://{API_TOKEN_GITHUB}:x-oauth-basic@github.com/Zero-Trust/pdf.git
           cd pdf/
           echo "**** 2 ****"
           git config -l
