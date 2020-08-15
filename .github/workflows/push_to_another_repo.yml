@@ -18,30 +18,29 @@ jobs:
       - name: Setup git repogitories
         env:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
-        run: | 
-          pwd
-#         run: |
-#           echo "${GH_REPO_DEPLOY_KEY}" > ~/deploy_key.pem
-#           chmod 600 ~/deploy_key.pem
-#           git config --global pull.rebase false
-#           git config --global user.name "Zero-Trust"
-#           git config --global user.email "62760177+Zero-Trust@users.noreply.github.com"
-#           git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
-#           git pull origin master
-#           git checkout master
+        run: |
+          echo "${GH_REPO_DEPLOY_KEY}" > ./deploy_key.pem
+          chmod 600 ./deploy_key.pem
+          git config --global pull.rebase false
+          git config --global user.name "Zero-Trust"
+          git config --global user.email "62760177+Zero-Trust@users.noreply.github.com"
+          git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
+          git pull origin master
+          git checkout master
           
-#       - name: Get file
-#         run: |
-#           touch main.pdf
-#           echo "this is test" > main.pdf
+      - name: Get file
+        run: |
+          touch main.pdf
+          echo "this is test" > main.pdf
           
-#       - name: Commit to Another Repository
-#         env:
-#           GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
-#         run: |
-#           git add -A
-#           if ! git diff --cached --quiet; then
-#             git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
-#             git pull origin master
-#             git push origin master
-#           fi
+      - name: Commit to Another Repository
+        env:
+          GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+        run: |
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
+            git pull origin master
+            git push origin master
+          fi
+          rm ./deploy_key.pem
