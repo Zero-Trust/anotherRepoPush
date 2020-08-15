@@ -35,6 +35,7 @@ jobs:
       - name: Get file
         run: |
           cd pdf/
+          git config -l
           touch main.pdf
           echo "this is test" > main.pdf
           echo "This is test" > Notes/test.txt
