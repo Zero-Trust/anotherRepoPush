@@ -19,8 +19,8 @@ jobs:
         env:
           GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
         run: |
-          echo "${GH_REPO_DEPLOY_KEY}" > /root/deploy_key.pem
-          chmod 600 /root/deploy_key.pem
+          echo "${GH_REPO_DEPLOY_KEY}" > ~/deploy_key.pem
+          chmod 600 ~/deploy_key.pem
           git config --global pull.rebase false
           git config --global user.name "Zero-Trust"
           git config --global user.email "62760177+Zero-Trust@users.noreply.github.com"
@@ -35,7 +35,7 @@ jobs:
           
       - name: Commit to Another Repository
         env:
-          GIT_SSH_COMMAND: ssh -i /root/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+          GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
           git add -A
           if ! git diff --cached --quiet; then
