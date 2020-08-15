@@ -67,6 +67,7 @@ jobs:
           ls -l ./pdf
           echo "***** clean up *****"
           # cd ..
+          git submodule deinit
           git rm pdf
           git rm .gitmodules
           pwd
