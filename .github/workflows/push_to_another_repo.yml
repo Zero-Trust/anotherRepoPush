@@ -37,12 +37,13 @@ jobs:
           echo "This is test" > ./pdf/Notes/test.txt
           touch main.pdf
           echo "this is test" > main.pdf
+          tree ./pdf
           
       - name: Commit to Another Repository
         # env:
         #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
-          ls -l ./pdf
+          tree ./pdf
           cd ./pdf
           git add .
           git commit -m "Deploy ${GITHUB_SHA} by GitHub Actions"
