@@ -47,8 +47,9 @@ jobs:
           echo "***** Get file *****"
           
       - name: Commit to Another Repository
-        # env:
-        #   GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+        env:
+          GH_REPO_DEPLOY_KEY: ${{ secrets.GH_REPO_DEPLOY_KEY }}
+          GIT_SSH_COMMAND: ssh -i ./deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
         run: |
           cd pdf/
           echo "**** 2 ****"
