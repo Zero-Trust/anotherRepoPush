@@ -39,7 +39,7 @@ jobs:
           echo "this is test" > main.pdf
           echo "This is test" > Notes/test.txt
           git add main.pdf
-          git add Notes/test.tet
+          git add Notes/test.txt
           echo "***** Get file *****"
           pwd
           ls -l
