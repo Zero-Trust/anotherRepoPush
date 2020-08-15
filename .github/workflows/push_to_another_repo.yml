@@ -25,10 +25,10 @@ jobs:
           git config --global pull.rebase false
           git config --global user.name "Zero-Trust"
           git config --global user.email "62760177+Zero-Trust@users.noreply.github.com"
-          git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
           git clone origin master
           cd pdf
           git checkout master
+          git config remote.origin.url "git@github.com:Zero-Trust/pdf.git"
           pwd
           
       - name: Get file
